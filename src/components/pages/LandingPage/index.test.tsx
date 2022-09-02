@@ -6,10 +6,4 @@ test('renders page header', () => {
   render(<LandingPage />);
   const headerElement = screen.getByText(/art site/i);
   expect(headerElement).toBeInTheDocument();
-});
-
-test('renders page link', () => {
-  render(<LandingPage />);
-  const linkElement = screen.getByText(/visit site/i);
-  expect(linkElement).toBeInTheDocument();
-});
+})
