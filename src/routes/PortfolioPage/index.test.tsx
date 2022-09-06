@@ -1,9 +1,22 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event'
+import { renderWithRouter } from '../../utils/testUtils'
+import { sections } from '../../utils/mockUtils'
 import PortfolioPage from './index';
 
 test('renders page header', () => {
-  render(<PortfolioPage />);
+  renderWithRouter(<PortfolioPage />);
   const headerElement = screen.getByText(/portfolio/i);
   expect(headerElement).toBeInTheDocument();
+});
+
+test('navigation renders section content', () => {
+  renderWithRouter(<PortfolioPage />);
+  const section = sections[0].name
+  const link = screen.getByText(section)
+  userEvent.click(link)
+  setTimeout(() => {
+    expect(screen.getByText(section)).toBeInTheDocument()
+  }, 2000)
 });

@@ -3,7 +3,7 @@ import './style.css';
 
 type PageTemplateProps = {
   pageTitle: string;
-  children: any;
+  children?: React.ReactNode;
 }
 
 const PageTemplate = ({ pageTitle, children }: PageTemplateProps) => {

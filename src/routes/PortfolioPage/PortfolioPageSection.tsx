@@ -4,6 +4,7 @@ import './style.css';
 
 const PortfolioPageSection = () => {
   let params = useParams();
+
   return (
     <section className='portfolio-section-container'>
       <h3>{params.sectionId}</h3>

@@ -1,19 +1,9 @@
 import React from 'react'
 import { NavLink, Outlet } from 'react-router-dom';
 import './style.css';
+import { sections } from '../../utils/mockUtils'
 import PageTemplate from '../../templates/PageTemplate'
 
-const sections = [
-  {
-    name: 'painting',
-  },
-  {
-    name: 'drawing',
-  },
-  {
-    name: 'sculpture',
-  },
-]
 
 const PortfolioPage = () => {
   return (
