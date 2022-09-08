@@ -6,8 +6,8 @@ const PortfolioPageSection = () => {
   let params = useParams();
 
   return (
-    <section className='portfolio-section-container'>
-      <h3>{params.sectionId}</h3>
+    <section className='portfolio-page-section-container'>
+      <h4>{params.sectionId}</h4>
     </section>
   )
 }

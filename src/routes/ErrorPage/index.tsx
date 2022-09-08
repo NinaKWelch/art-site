@@ -4,7 +4,7 @@ import PageTemplate from '../../templates/PageTemplate'
 
 const ErrorPage = () => {
   return (
-    <PageTemplate pageTitle="Not Found">
+    <PageTemplate pageTitle="not found">
       <div>Some text...</div>
     </PageTemplate>
   )

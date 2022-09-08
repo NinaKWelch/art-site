@@ -1,3 +1,6 @@
-.page-container {
+.page-template-container {
   text-align: center;
+}
+.page-template-header {
+  text-transform: capitalize;
 }

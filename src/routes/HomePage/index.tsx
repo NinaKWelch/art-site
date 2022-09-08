@@ -4,7 +4,7 @@ import PageTemplate from '../../templates/PageTemplate'
 
 const HomePage = () => {
   return (
-    <PageTemplate pageTitle="Home">
+    <PageTemplate pageTitle="home">
       <div>Some text...</div>
     </PageTemplate>
   )

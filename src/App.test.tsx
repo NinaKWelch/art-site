@@ -1,12 +1,17 @@
 import React from 'react';
 import { screen } from '@testing-library/react';
-//import userEvent from '@testing-library/user-event';
 import { renderWithRouter } from './utils/testUtils';
 import App from './App';
 
+test('artist page displays artist name as header', () => {
+  renderWithRouter(<App />, { route: '/john-doe' });
 
-test('non-existent route displays an error page', () => {
-  renderWithRouter(<App />, { route: '/non-route/non-route' })
+  const headerElement = screen.getByText(/john doe/i);
+  expect(headerElement).toBeInTheDocument();
+});
 
-  expect(screen.getByText(/not found/i)).toBeInTheDocument()
+test('non-existent artist page displays an error page', () => {
+  renderWithRouter(<App />, { route: '/non-route' });
+
+  expect(screen.getByText(/not found/i)).toBeInTheDocument();
 })
