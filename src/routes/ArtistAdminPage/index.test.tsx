@@ -10,14 +10,18 @@ const artist = {
   nameUrl: 'mary-smith',
 }
 
+test('shows error page for unauthorised user', () => {
+  renderWithRouter(<App/>, { route: `/${artist.nameUrl}/admin`});
+});
+
 test('renders page header', () => {
-  renderWithRouter(<App/>, { route: `/${artist.nameUrl}`});
+  renderWithRouter(<App/>, { route: `/${artist.nameUrl}/admin`});
   const headerElement = screen.getByText(/mary smith/i);
   expect(headerElement).toBeInTheDocument();
 });
 
 test('renders page subheader', () => {
-  renderWithRouter(<App/>, { route: `/${artist.nameUrl}`});
-  const subheaderElement = screen.getByText(/bio/i);
+  renderWithRouter(<App/>, { route: `/${artist.nameUrl}/admin`});
+  const subheaderElement = screen.getByText(/admin/i);
   expect(subheaderElement).toBeInTheDocument();
 });
