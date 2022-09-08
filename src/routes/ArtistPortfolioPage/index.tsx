@@ -18,8 +18,13 @@ const PortfolioPage = () => {
     currentArtist ? setArtist(currentArtist) : setArtist(null);
   }, [params.artistId])
   
-  // Show an error page id artist is not found
+  // Show an error page if artist is not found
   if (!artist) {
+    return <ErrorPage />
+  }
+
+  // Show an error page if artist has no portfolio
+  if (artist && !artist.portfolio) {
     return <ErrorPage />
   }
 

@@ -5,7 +5,7 @@ import HomePage from './routes/HomePage';
 import ArtistPage from './routes/ArtistPage';
 import ArtistAdminPage from './routes/ArtistAdminPage';
 import ArtistPortfolioPage from './routes/ArtistPortfolioPage';
-import ArtistPortfolioPageSection from './routes/ArtistPortfolioPage/ArtistPortfolioPageSection';
+import ArtistPortfolioPageCategory from './routes/ArtistPortfolioPage/ArtistPortfolioPageCategory';
 import ErrorPage from './routes/ErrorPage';
 
 const App = () => {
@@ -16,7 +16,7 @@ const App = () => {
       <Route path='/:artistId' element={<ArtistPage />} />
       <Route path='/:artistId/admin' element={<ArtistAdminPage />} />
       <Route path='/:artistId/portfolio' element={<ArtistPortfolioPage />} >
-        <Route path='/:artistId/portfolio/:sectionId' element={<ArtistPortfolioPageSection />} />
+        <Route path='/:artistId/portfolio/:categoryId' element={<ArtistPortfolioPageCategory />} />
       </Route>
       <Route path='*' element={<ErrorPage />} />
     </Routes>
