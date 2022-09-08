@@ -15,7 +15,7 @@ const ArtistAdminPage = () => {
     currentArtist ? setArtist(currentArtist) : setArtist(null);
   }, [params.artistId])
   
-  // Show an error page id artist is not found
+  // Show an error page if artist is not found
   if (!artist) {
     return <ErrorPage />
   }

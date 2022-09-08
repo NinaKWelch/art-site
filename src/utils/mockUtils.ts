@@ -21,6 +21,8 @@ export const artists = [
     id: 1,
     firstName: 'john',
     lastName: 'doe',
+    email: 'john.doe@art-site.com',
+    password: 'password',
     nameUrl: 'john-doe',
     portfolio: [
       {
@@ -49,6 +51,8 @@ export const artists = [
     id: 2,
     firstName: 'mary',
     lastName: 'smith',
+    email: 'mary.smith@art-site.com',
+    password: 'password',
     nameUrl: 'mary-smith',
   },
   {
@@ -56,6 +60,8 @@ export const artists = [
     firstName: 'kate',
     lastName: 'brown',
     nameUrl: 'kate-brown',
+    email: 'kate.brown@art-site.com',
+    password: 'password',
     portfolio: [
       {
         id: 500,

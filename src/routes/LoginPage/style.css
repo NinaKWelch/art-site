@@ -1,0 +1,18 @@
+.login-page-form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.login-page-form-input-label,
+.login-page-form-input {
+  display: block;
+  width: 100%;
+}
+
+.login-page-form-input {
+  margin-bottom: 1rem;
+}
+
+.login-page-form-submit-button {
+  width: 100%;
+}
