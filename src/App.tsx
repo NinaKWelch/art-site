@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { UserContext } from './context/UserContext'
 import { artists } from './utils/mockUtils';
 import { User } from './types/mockTypes';
 import LandingPage from './routes/LandingPage';
@@ -12,12 +13,12 @@ import ArtistPortfolioPageCategory from './routes/ArtistPortfolioPage/ArtistPort
 import ErrorPage from './routes/ErrorPage';
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState<User | null>(null)
-  console.log("USER: ", currentUser)
+  const { state, dispatch } = useContext(UserContext);
+  console.log("USER: ", state.currentUser)
   const loginUser = (email: string, password: string) => {
     const user: User | undefined = artists.find((artist) => artist.email === email && artist.password === password)
 
-    user ? setCurrentUser(user) : setCurrentUser(null)
+    user && dispatch({ type: 'LOGIN_USER', payload: user })
   }
 
   return (
