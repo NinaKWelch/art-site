@@ -4,15 +4,13 @@ import userEvent from '@testing-library/user-event';
 import LoginPage from './index';
 
 test('renders page header', () => {
-  const loginUser = jest.fn()
-  render(<LoginPage handleLoginUser={loginUser} />);
+  render(<LoginPage />);
   const headerElement = screen.getByText(/login/i, { selector: 'h2' });
   expect(headerElement).toBeInTheDocument();
 });
 
 test('correctly filled form is sent and inputs cleared', () => {
-  const loginUser = jest.fn()
-  render(<LoginPage handleLoginUser={loginUser} />);
+  render(<LoginPage />);
   const email = screen.getByLabelText(/email/i)
   const password = screen.getByLabelText(/password/i)
   const submitButton = screen.getByText(/login/i, { selector: 'button' })

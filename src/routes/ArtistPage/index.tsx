@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './style.css';
-import { artists } from '../../utils/mockUtils';
-import { Artist } from '../../types/mockInterfaces';
+import { allArtists } from '../../utils/mockUtils';
+import { Artist } from '../../types';
 import ErrorPage from '../ErrorPage';
 import PageTemplate from '../../templates/PageTemplate';
 import ArtistPageBio from './ArtistPageBio';
@@ -12,7 +12,7 @@ const ArtistPage = () => {
   const [artist, setArtist] = useState<Artist | null>(null)
 
   useEffect(() => {
-    const currentArtist = artists.find((artist) => artist.nameUrl === params.artistId)
+    const currentArtist = allArtists.find((artist) => artist.nameUrl === params.artistId)
     currentArtist ? setArtist(currentArtist) : setArtist(null);
   }, [params.artistId])
   

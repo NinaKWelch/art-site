@@ -16,7 +16,7 @@ export const categories = [
   },
 ]
 
-export const artists = [
+export const allArtists = [
   {
     id: 1,
     firstName: 'john',

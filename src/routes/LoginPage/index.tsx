@@ -1,40 +1,44 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './style.css';
+import { useAppStateValue } from '../../state';
+import { allArtists } from '../../utils/mockUtils';
+import { User } from '../../types'
+import { useField } from '../../hooks';
 import PageTemplate from '../../templates/PageTemplate'
 
-interface LoginPageProps {
-  handleLoginUser: Function;
-}
+const LoginPage = () => {
+  const [state, dispatch] = useAppStateValue();
+  const email = useField('email');
+  const password = useField('password')
 
-const defaultFormData = {
-  email: '',
-  password: '',
-}
+  const loginUser = (email: string, password: string) => {
+    const user: User | undefined = allArtists.find((artist) => artist.email === email && artist.password === password)
 
-const LoginPage = ({ handleLoginUser }: LoginPageProps) => {
-  const [fromData, setFormData] = useState(defaultFormData);
-  const { email, password } = fromData;
+    user && dispatch({ type: 'LOGIN_USER', payload: user })
+  }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleLoginUser(email, password)
-    setFormData(defaultFormData)
+    loginUser(email.input.value, password.input.value)
+    email.reset()
+    password.reset()
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setFormData((prevState) => ({
-      ...prevState,
-      [e.target.id]: e.target.value,
-    }));
+  if (state.currentUser) {
+    return (
+      <PageTemplate pageTitle='login'>
+        <p>Already signed in</p>
+      </PageTemplate>
+    )
   }
 
   return (
     <PageTemplate pageTitle='login'>
       <form className='login-page-form' onSubmit={handleSubmit}>
         <label className='login-page-form-input-label' htmlFor='email'>Email:</label>
-        <input className='login-page-form-input' type='email' name='email' id='email' value={email} required onChange={handleChange} />
+        <input className='login-page-form-input' {...email.input} required />
         <label className='login-page-form-input-label' htmlFor='password'>Password:</label>
-        <input className='login-page-form-input' type='password'name='password' id='password' value={password} required onChange={handleChange} />
+        <input className='login-page-form-input' {...password.input} required />
         <button className='login-page-form-submit-button' type='submit'>Login</button>
       </form>
     </PageTemplate>
