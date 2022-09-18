@@ -1,6 +1,6 @@
-import React, { createContext, useReducer, useContext } from 'react';
-import { ArtistState, ArtistAction }  from './reducers/artistReducer';
-import { CurrentUserState, CurrentUserAction } from './reducers/currentUserReducer';
+import React, { createContext, useReducer, useContext, useMemo } from 'react';
+import { ArtistState, ArtistAction }  from './reducers/artists';
+import { CurrentUserState, CurrentUserAction } from './reducers/currentUser';
 
 export type AppState = ArtistState & CurrentUserState
 export type AppAction = ArtistAction | CurrentUserAction
@@ -29,8 +29,10 @@ export const AppStateProvider = ({
   children
 }: AppStateProviderProps) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+  // Memoize array value. Else all context consumers update on *every* render
+  // https://stackoverflow.com/questions/59200785/react-usereducer-how-to-combine-multiple-reducers
   return (
-    <AppStateContext.Provider value={[ state, dispatch ]}>
+    <AppStateContext.Provider value={useMemo(() => [state, dispatch], [state])}>
       {children}
     </AppStateContext.Provider>
   );

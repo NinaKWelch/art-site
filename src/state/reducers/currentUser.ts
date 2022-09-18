@@ -8,7 +8,7 @@ export type CurrentUserAction  =
 | { type: 'LOGIN_USER', payload: User }
 | { type: 'LOGOUT_USER' }
 
-export const currentUserReducer = (state: CurrentUserState, action: CurrentUserAction): CurrentUserState => {
+export const currentUser = (state: CurrentUserState, action: CurrentUserAction): CurrentUserState => {
   switch (action.type) {
     case 'LOGIN_USER':
       return {

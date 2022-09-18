@@ -12,8 +12,8 @@ import ArtistPortfolioPageCategory from './routes/ArtistPortfolioPage/ArtistPort
 import ErrorPage from './routes/ErrorPage';
 
 const App = () => {
-  const [, dispatch] = useAppStateValue();
-
+  const [state, dispatch] = useAppStateValue();
+console.log(state)
   useEffect(() => {
     dispatch({ type: 'SET_ARTIST_LIST', payload: allArtists })
   }, [dispatch])

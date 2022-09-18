@@ -14,7 +14,7 @@ export type ArtistAction =
       payload: Artist;
     };
 
-export const artistReducer = (state: ArtistState, action: ArtistAction): ArtistState => {
+export const artists = (state: ArtistState, action: ArtistAction): ArtistState => {
   switch (action.type) {
     case 'SET_ARTIST_LIST':
       return {
